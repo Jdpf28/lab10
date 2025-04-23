@@ -5,8 +5,7 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.Scanner;
 
-public class MainAsimetrico {
-
+public class MainAsimetrico2 {
     private final static String ALGORITMO = "RSA";
 
     public static void imprimir (byte [] contenido){
@@ -37,11 +36,11 @@ public class MainAsimetrico {
         PrivateKey llavePrivada = keyPair.getPrivate();
 
         long tiempoInicial = System.nanoTime();
-        byte[] textoCifrado = Asimetrico.cifrar(llavePublica, ALGORITMO,texto);
+        byte[] textoCifrado = Asimetrico.cifrar(llavePrivada, ALGORITMO,texto);
         System.out.println("input cifrado en RSA con llaves de 1024 bits en byte[]: ");
         imprimir(textoCifrado);
 
-        byte[] textoDescifrado = Asimetrico.descifrar(llavePrivada, ALGORITMO, textoCifrado);
+        byte[] textoDescifrado = Asimetrico.descifrar(llavePublica, ALGORITMO, textoCifrado);
         long tiempoFinal = System.nanoTime();
         System.out.println("Input descifrado en byte[]: ");
         imprimir(textoDescifrado);
